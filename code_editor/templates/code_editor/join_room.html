@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Join Room</title>
+</head>
+<body>
+    <h1>Join Room</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="room_code" placeholder="Enter Room Code" required>
+        <button type="submit">Join</button>
+    </form>
+</body>
+</html>
