@@ -1,116 +1,52 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Code Room: {{ room_name }}</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        #code-editor {
-            width: 100%;
-            height: 300px;
-            margin-bottom: 10px;
-        }
-        #output {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            white-space: pre-wrap;
-        }
-    </style>
-</head>
-<body>
-    <h1>Collaborative Code Editor - Room: {{ room_name }}</h1>
+    <head>
+        <title>Code Room: {{ room_name }}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'code_editor/css/style.css' %}">
+    </head>
+    <body>
+        {% comment %}
+        hidden element to get room-name in script.js 
+        {% endcomment %}
+        <div id="room-name" style="display: none;">{{ room_name }}</div>
+        
+        <h1>Collaborative Code Editor - Room: {{ room_name }}</h1>
+        
+        <div>
+            <label>Language:</label>
+            <select id="language">
+                {% for lang in languages %}
+                    <option value="{{ lang }}">{{ lang|upper }}</option>
+                {% endfor %}
+            </select>
+            <button id="run-code">Run Code</button>
+        </div>
     
-    <div>
-        <label>Language:</label>
-        <select id="language">
-            {% for lang in languages %}
-                <option value="{{ lang }}">{{ lang|upper }}</option>
-            {% endfor %}
-        </select>
-        <button id="run-code">Run Code</button>
-    </div>
-
-    <textarea id="code-editor" placeholder="Start typing your code..."></textarea>
-    <div id="output"></div>
-
-    <script>
-        const roomName = "{{ room_name }}";
-        const socket = new WebSocket(`${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/ws/code/${roomName}/`);
-
-        const codeEditor = document.getElementById('code-editor');
-        const runButton = document.getElementById('run-code');
-        const outputDiv = document.getElementById('output');
-        const languageSelect = document.getElementById('language');
-
-        // Prevent sending updates too frequently
-        let typingTimer;
-        const doneTypingInterval = 300; // ms
-
-        // WebSocket connection handlers
-        socket.onopen = function(e) {
-            console.log('WebSocket connection established');
-        };
-
-        socket.onerror = function(error) {
-            console.error('WebSocket Error:', error);
-            outputDiv.textContent = 'WebSocket connection error';
-        };
-
-        socket.onclose = function(event) {
-            console.log('WebSocket connection closed:', event);
-            outputDiv.textContent = 'WebSocket connection closed';
-        };
-
-        // WebSocket message handler
-        socket.onmessage = function(e) {
-            const data = JSON.parse(e.data);
-            
-            if (data.type === 'code_update') {
-                // Prevent cursor jumping by only updating if different
-                if (codeEditor.value !== data.code) {
-                    const cursorPosition = codeEditor.selectionStart;
-                    codeEditor.value = data.code;
-                    codeEditor.setSelectionRange(cursorPosition, cursorPosition);
-                }
-            } else if (data.type === 'execution_result') {
-                outputDiv.textContent = data.output;
-                outputDiv.style.color = 'black';
-            } else if (data.type === 'execution_error') {
-                outputDiv.textContent = 'Error: ' + data.error;
-                outputDiv.style.color = 'red';
-            }
-        };
-
-        // Debounced code update to reduce WebSocket traffic
-        function sendCodeUpdate() {
-            socket.send(JSON.stringify({
-                'type': 'code_update',
-                'code': codeEditor.value
-            }));
-        }
-
-        // Code update listener
-        codeEditor.addEventListener('input', function() {
-            // Clear previous timer
-            clearTimeout(typingTimer);
-            
-            // Set new timer
-            typingTimer = setTimeout(sendCodeUpdate, doneTypingInterval);
-        });
-
-        // Code execution
-        runButton.addEventListener('click', function() {
-            socket.send(JSON.stringify({
-                'type': 'execute_code',
-                'code': codeEditor.value,
-                'language': languageSelect.value
-            }));
-        });
-    </script>
-</body>
+        <div class="container">
+            <!-- Code editor section -->
+            <div id="code-editor-container" class="mb-3">
+                <textarea id="code-editor" placeholder="Start coding here..." class="form-control"></textarea>
+            </div>
+    
+            <!-- Output and Chat Section -->
+            <div id="output-chat-container" class="d-flex">
+                <h3>Output</h3>
+                <!-- Output Section -->
+                <div id="output" class="flex-grow-1"></div>
+    
+                <!-- Chat Section -->
+                <div id="chat" class="flex-grow-1">
+                    <h3>Chat</h3>
+                    <div id="chat-messages"></div>
+                    <input id="chat-input" type="text" class="form-control" placeholder="Type your message...">
+                </div>
+            </div>
+    
+        </div>
+    
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static 'code_editor/js/script.js' %}"></script>
+    </body>
 </html>

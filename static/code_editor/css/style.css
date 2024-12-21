@@ -1,0 +1,70 @@
+/* Make the coding area take most of the space */
+#code-editor {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+
+/* Container for both the output and chat sections */
+#output-chat-container {
+    display: flex;
+    height: 300px; /* Height of the output + chat section */
+    margin-top: 20px;
+}
+
+/* Output section styles */
+#output {
+    flex: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-y: scroll;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Chat section styles */
+#chat {
+    flex: 1;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    overflow-y: scroll;
+    font-size: 14px;
+}
+
+/* Basic styling for the status section */
+#status {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Ensure the room name, editor, output, and chat are spaced properly */
+.container {
+    margin-top: 20px;
+}
+
+/* Responsive styles to handle smaller screens */
+@media (max-width: 768px) {
+    #output-chat-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #output, #chat {
+        margin-left: 0;
+        margin-top: 10px;
+        height: 200px; /* Ensure it doesn't take too much space on smaller screens */
+    }
+}
