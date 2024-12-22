@@ -1,17 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Join Room</title>
-</head>
-<body>
-    <h1>Join Room</h1>
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
-    <form method="post">
-        {% csrf_token %}
-        <input type="text" name="room_code" placeholder="Enter Room Code" required>
-        <button type="submit">Join</button>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'code_editor/css/join_room.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="join-room-container">
+    <div class="join-room-card">
+        <div class="join-room-header">
+            <h2>Join Room</h2>
+        </div>
+        {% if error %}
+            <div class="alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+        <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="room_code" class="form-label">Room Code</label>
+                <input type="text" 
+                       class="join-room-input" 
+                       id="room_code" 
+                       name="room_code" 
+                       placeholder="Enter Room Code" 
+                       required>
+                <div class="invalid-feedback">
+                    Please enter a valid room code.
+                </div>
+            </div>
+            <button type="submit" class="join-room-button">Join Room</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

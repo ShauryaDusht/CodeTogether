@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'code_editor/css/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="auth-card">
+                <div class="auth-card-header">
+                    <h2 class="text-center">Login</h2>
+                </div>
+                <div class="auth-card-body">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="auth-input" id="username" name="username" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="auth-input" id="password" name="password" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="auth-button">Login</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-4">
+                        <p class="auth-text">Don't have an account? <a href="{% url 'register' %}" class="auth-link">Register here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

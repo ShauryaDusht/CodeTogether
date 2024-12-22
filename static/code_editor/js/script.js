@@ -6,38 +6,9 @@ const runButton = document.getElementById('run-code');
 const outputDiv = document.getElementById('output');
 const languageSelect = document.getElementById('language');
 
-// Add a status div to show WebSocket connection status
-const statusDiv = document.createElement('div');
-statusDiv.id = 'status';
-statusDiv.style.marginBottom = '10px';
-statusDiv.style.padding = '5px';
-statusDiv.style.border = '1px solid #ccc';
-statusDiv.style.borderRadius = '5px';
-document.body.insertBefore(statusDiv, document.body.firstChild);
-
-// Update connection status
-function updateStatus(message, color) {
-    statusDiv.textContent = message;
-    statusDiv.style.color = color;
-}
-
-// WebSocket connection handlers
-socket.onopen = function(e) {
-    console.log('WebSocket connection established');
-    updateStatus('WebSocket connection established', 'green');
-};
-
-socket.onerror = function(error) {
-    console.error('WebSocket Error:', error);
-    updateStatus('WebSocket connection error', 'red');
-};
-
-socket.onclose = function(event) {
-    console.log('WebSocket connection closed:', event);
-    updateStatus('WebSocket connection closed', 'orange');
-};
-
 // WebSocket message handler
+
+// Print output in multiple lines
 socket.onmessage = function(e) {
     const data = JSON.parse(e.data);
     
@@ -49,13 +20,15 @@ socket.onmessage = function(e) {
             codeEditor.setSelectionRange(cursorPosition, cursorPosition);
         }
     } else if (data.type === 'execution_result') {
-        outputDiv.textContent = data.output;
+        // Replace newline characters with <br> tags for HTML rendering
+        outputDiv.innerHTML = data.output.replace(/\n/g, '<br>');
         outputDiv.style.color = 'black';
     } else if (data.type === 'execution_error') {
         outputDiv.textContent = 'Error: ' + data.error;
         outputDiv.style.color = 'red';
     }
 };
+
 
 // Debounced code update to reduce WebSocket traffic
 let typingTimer; // Define the typingTimer variable

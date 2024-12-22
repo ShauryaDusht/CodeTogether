@@ -1,0 +1,110 @@
+/* Join room styles using Tokyo Night theme */
+.join-room-container {
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-color: #1a1b26;
+    color: #a9b1d6;
+}
+
+.join-room-card {
+    background-color: #1f2335;
+    border: 1px solid #2f3447;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.join-room-header {
+    background-color: #16171d;
+    border-bottom: 1px solid #2f3447;
+    padding: 1.5rem;
+    border-radius: 8px 8px 0 0;
+}
+
+.join-room-header h2 {
+    color: #7aa2f7;
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.form-group {
+    padding: 2rem;
+}
+
+.form-label {
+    color: #a9b1d6;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.join-room-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: #24283b;
+    border: 1px solid #2f3447;
+    border-radius: 6px;
+    color: #a9b1d6;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.join-room-input:focus {
+    outline: none;
+    border-color: #7aa2f7;
+    box-shadow: 0 0 0 2px rgba(122, 162, 247, 0.2);
+    background-color: #2f3447;
+}
+
+.join-room-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #7aa2f7;
+    border: none;
+    border-radius: 6px;
+    color: #1a1b26;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.join-room-button:hover {
+    background-color: #6889ff;
+    transform: translateY(-1px);
+}
+
+.alert-danger {
+    background-color: rgba(247, 118, 142, 0.1);
+    border-color: #f7768e;
+    color: #f7768e;
+    padding: 1rem;
+    margin: 1.5rem 2rem 0;
+    border-radius: 6px;
+    border: 1px solid transparent;
+}
+
+.invalid-feedback {
+    color: #f7768e;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .form-group {
+        padding: 1.5rem;
+    }
+    
+    .join-room-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .alert-danger {
+        margin: 1.5rem 1.5rem 0;
+    }
+}

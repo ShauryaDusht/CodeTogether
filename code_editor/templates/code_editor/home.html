@@ -1,11 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Collaborative Code Editor</title>
-</head>
-<body>
-    <h1>Collaborative Code Editor</h1>
-    <a href="{% url 'create_room' %}">Create Room</a>
-    <a href="{% url 'join_room' %}">Join Room</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="welcome-section">
+    {% if user.is_authenticated %}
+        <h1>Welcome to Code Editor</h1>
+        <p class="lead">Start collaborating with others by creating or joining a room.</p>
+        <div class="mt-4">
+            <a href="{% url 'create_room' %}" class="btn btn-primary me-2">Create Room</a>
+            <a href="{% url 'join_room' %}" class="btn btn-secondary">Join Room</a>
+        </div>
+    {% else %}
+        <h1>Welcome to Code Editor</h1>
+        <p class="lead">Please login or register to start coding collaboratively.</p>
+        <div class="mt-4">
+            <a href="{% url 'login' %}" class="btn btn-primary me-2">Login</a>
+            <a href="{% url 'register' %}" class="btn btn-secondary">Register</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

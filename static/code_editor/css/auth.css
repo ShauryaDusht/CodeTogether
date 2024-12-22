@@ -1,0 +1,135 @@
+/* Dark theme authentication styles */
+.auth-container {
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-color: #1a1b26;
+    color: #a9b1d6;
+}
+
+.auth-card {
+    background-color: #1f2335;
+    border: 1px solid #2f3447;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.auth-card-header {
+    background-color: #16171d;
+    border-bottom: 1px solid #2f3447;
+    padding: 1.5rem;
+    border-radius: 8px 8px 0 0;
+}
+
+.auth-card-header h2 {
+    color: #7aa2f7;
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.auth-card-body {
+    padding: 2rem;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: #24283b;
+    border: 1px solid #2f3447;
+    border-radius: 6px;
+    color: #a9b1d6;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.auth-input:focus {
+    outline: none;
+    border-color: #7aa2f7;
+    box-shadow: 0 0 0 2px rgba(122, 162, 247, 0.2);
+    background-color: #2f3447;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #7aa2f7;
+    border: none;
+    border-radius: 6px;
+    color: #1a1b26;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.auth-button:hover {
+    background-color: #6889ff;
+    transform: translateY(-1px);
+}
+
+.form-label {
+    color: #a9b1d6;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.auth-text {
+    color: #a9b1d6;
+    margin: 0;
+}
+
+.auth-link {
+    color: #7aa2f7;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.auth-link:hover {
+    color: #6889ff;
+    text-decoration: underline;
+}
+
+/* Alert styling */
+.alert {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+    border: 1px solid transparent;
+}
+
+.alert-success {
+    background-color: rgba(158, 206, 106, 0.1);
+    border-color: #9ece6a;
+    color: #9ece6a;
+}
+
+.alert-danger {
+    background-color: rgba(247, 118, 142, 0.1);
+    border-color: #f7768e;
+    color: #f7768e;
+}
+
+.alert-warning {
+    background-color: rgba(224, 175, 104, 0.1);
+    border-color: #e0af68;
+    color: #e0af68;
+}
+
+/* Error messages */
+.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+    color: #f7768e;
+    font-size: 0.875rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .auth-card-body {
+        padding: 1.5rem;
+    }
+    
+    .auth-card-header h2 {
+        font-size: 1.5rem;
+    }
+}

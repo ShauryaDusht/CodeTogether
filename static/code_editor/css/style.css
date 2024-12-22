@@ -1,70 +1,114 @@
-/* Make the coding area take most of the space */
+/* Main background colors and text colors */
+body {
+    background-color: #1a1b26;
+    color: #a9b1d6;
+}
+
+/* Code editor styling */
+#code-editor-container {
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
 #code-editor {
     width: 100%;
-    height: 100%;
-    min-height: 400px;
-    font-family: Consolas, 'Courier New', monospace;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: #f5f5f5;
+    min-height: 300px;
+    background-color: #585d93;
+    color: #a9b1d6;
+    border: 1px solid #2f3447;
+    border-radius: 6px;
+    padding: 15px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    resize: vertical;
 }
 
-/* Container for both the output and chat sections */
-#output-chat-container {
-    display: flex;
-    height: 300px; /* Height of the output + chat section */
-    margin-top: 20px;
+/* Card styling for output and chat sections */
+.card {
+    background-color: #1a1b26;
+    border: 1px solid #2f3447;
+    border-radius: 6px;
+    margin-bottom: 20px;
 }
 
-/* Output section styles */
-#output {
-    flex: 1;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    overflow-y: scroll;
-    font-size: 14px;
-    color: #333;
+.card-header {
+    background-color: #1f2335;
+    border-bottom: 1px solid #2f3447;
+    padding: 10px 15px;
 }
 
-/* Chat section styles */
-#chat {
-    flex: 1;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    margin-left: 10px;
-    overflow-y: scroll;
-    font-size: 14px;
+.card-header h3 {
+    color: #4367b5;
+    margin: 0;
+    font-size: 1.2rem;
 }
 
-/* Basic styling for the status section */
-#status {
-    margin-bottom: 10px;
-    padding: 5px;
-    border-radius: 5px;
-    font-weight: bold;
+.card-body {
+    padding: 15px;
 }
 
-/* Ensure the room name, editor, output, and chat are spaced properly */
-.container {
-    margin-top: 20px;
+/* Output and chat message areas */
+#output, #chat-messages {
+    background-color: #1f2335;
+    border: 1px solid #2f3447;
+    border-radius: 4px;
+    color: #a9b1d6;
+    min-height: 200px;
+    padding: 15px;
 }
 
-/* Responsive styles to handle smaller screens */
-@media (max-width: 768px) {
-    #output-chat-container {
-        flex-direction: column;
-        height: auto;
-    }
+#output-container{
+    background-color: pink;
+}
 
-    #output, #chat {
-        margin-left: 0;
-        margin-top: 10px;
-        height: 200px; /* Ensure it doesn't take too much space on smaller screens */
-    }
+/* Chat input styling */
+#chat-input {
+    background-color: #1f2335;
+    border: 1px solid #2f3447;
+    color: #a9b1d6;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+#chat-input::placeholder {
+    color: #565f89;
+}
+
+/* Language select and run button styling */
+#language {
+    background-color: #1f2335;
+    border: 1px solid #2f3447;
+    color: #a9b1d6;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+#run-code {
+    background-color: #7aa2f7;
+    border: none;
+    color: #1a1b26;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+#run-code:hover {
+    background-color: #6889ff;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1f2335;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2f3447;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3b4261;
 }
