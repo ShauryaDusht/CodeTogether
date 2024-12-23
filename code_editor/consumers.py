@@ -2,7 +2,7 @@ import json
 import subprocess
 import tempfile
 import os
-
+from datetime import datetime
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
 
@@ -10,6 +10,7 @@ class CodeEditorConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = f'code_{self.room_name}'
+        self.user = self.scope["user"]
 
         # Join room group
         await self.channel_layer.group_add(
@@ -56,6 +57,21 @@ class CodeEditorConsumer(AsyncWebsocketConsumer):
                     'type': 'execution_error',
                     'error': str(e)
                 }))
+        elif message_type == 'chat_message':
+            # Handle chat messages
+            username = self.user.username if self.user.is_authenticated else 'Anonymous'
+            timestamp = datetime.now().strftime('%I:%M %p')  # 12-hour format
+            
+            # Broadcast chat message to room group
+            await self.channel_layer.group_send(
+                self.room_group_name,
+                {
+                    'type': 'chat_message',
+                    'message': data['message'],
+                    'username': username,
+                    'timestamp': timestamp
+                }
+            )
 
     async def broadcast_code_update(self, event):
         # Only send the update to other users
@@ -64,6 +80,15 @@ class CodeEditorConsumer(AsyncWebsocketConsumer):
                 'type': 'code_update',
                 'code': event['code']
             }))
+
+    async def chat_message(self, event):
+        # Send chat message to WebSocket
+        await self.send(text_data=json.dumps({
+            'type': 'chat_message',
+            'message': event['message'],
+            'username': event['username'],
+            'timestamp': event['timestamp']
+        }))
 
     async def code_update(self, event):
         # Send code update to WebSocket
@@ -96,7 +121,8 @@ class CodeEditorConsumer(AsyncWebsocketConsumer):
         extensions = {
             'python': '.py',
             'java': '.java',
-            'cpp': '.cpp'
+            'cpp': '.cpp',
+            'javascript': '.js'
         }
         return extensions.get(language, '.txt')
 
@@ -104,6 +130,23 @@ class CodeEditorConsumer(AsyncWebsocketConsumer):
         commands = {
             'python': ['python3', file_path],
             'java': ['javac', file_path],
-            'cpp': ['g++', file_path, '-o', file_path + '_executable', '&&', file_path + '_executable']
+            'cpp': ['g++', file_path, '-o', file_path + '_executable', '&&', file_path + '_executable'],
+            'javascript': ['node', file_path]
         }
         return commands.get(language, ['python3', file_path])
+
+    async def user_join(self, event):
+        # Notify when a user joins the room
+        await self.send(text_data=json.dumps({
+            'type': 'system_message',
+            'message': f"{event['username']} joined the room",
+            'timestamp': datetime.now().strftime('%I:%M %p')
+        }))
+
+    async def user_leave(self, event):
+        # Notify when a user leaves the room
+        await self.send(text_data=json.dumps({
+            'type': 'system_message',
+            'message': f"{event['username']} left the room",
+            'timestamp': datetime.now().strftime('%I:%M %p')
+        }))

@@ -16,6 +16,16 @@ from django.utils.decorators import method_decorator
 class HomeView(TemplateView):
     template_name = 'code_editor/home.html'
 
+'''
+ $$$$$$\  $$\   $$\ $$$$$$$$\ $$\   $$\ 
+$$  __$$\ $$ |  $$ |\__$$  __|$$ |  $$ |
+$$ /  $$ |$$ |  $$ |   $$ |   $$ |  $$ |
+$$$$$$$$ |$$ |  $$ |   $$ |   $$$$$$$$ |
+$$  __$$ |$$ |  $$ |   $$ |   $$  __$$ |
+$$ |  $$ |$$ |  $$ |   $$ |   $$ |  $$ |
+$$ |  $$ |\$$$$$$  |   $$ |   $$ |  $$ |
+\__|  \__| \______/    \__|   \__|  \__|
+'''
 class RegisterView(View):
     def get(self, request):
         if request.user.is_authenticated:
@@ -62,6 +72,16 @@ class CustomLogoutView(LogoutView):
             messages.info(request, 'You have been logged out.')
         return super().dispatch(request, *args, **kwargs)
 
+'''
+$$$$$$$\   $$$$$$\   $$$$$$\  $$\      $$\ 
+$$  __$$\ $$  __$$\ $$  __$$\ $$$\    $$$ |
+$$ |  $$ |$$ /  $$ |$$ /  $$ |$$$$\  $$$$ |
+$$$$$$$  |$$ |  $$ |$$ |  $$ |$$\$$\$$ $$ |
+$$  __$$< $$ |  $$ |$$ |  $$ |$$ \$$$  $$ |
+$$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |\$  /$$ |
+$$ |  $$ | $$$$$$  | $$$$$$  |$$ | \_/ $$ |
+\__|  \__| \______/  \______/ \__|     \__|
+'''
 @method_decorator(login_required(login_url=reverse_lazy('login')), name='dispatch')
 class CreateRoomView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):

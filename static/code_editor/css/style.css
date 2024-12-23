@@ -1,101 +1,161 @@
-/* Main background colors and text colors */
-body {
-    background-color: #1a1b26;
-    color: #a9b1d6;
-}
-
-/* Code editor styling */
-#code-editor-container {
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-
-#code-editor {
-    width: 100%;
-    min-height: 300px;
-    background-color: #585d93;
-    color: #a9b1d6;
-    border: 1px solid #2f3447;
-    border-radius: 6px;
-    padding: 15px;
-    font-family: 'Consolas', 'Monaco', monospace;
-    resize: vertical;
-}
-
-/* Card styling for output and chat sections */
+/* 
+ $$$$$$\   $$$$$$\  $$$$$$$\  $$$$$$$\   $$$$$$\  
+$$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\ 
+$$ /  \__|$$ /  $$ |$$ |  $$ |$$ |  $$ |$$ /  \__|
+$$ |      $$$$$$$$ |$$$$$$$  |$$ |  $$ |\$$$$$$\  
+$$ |      $$  __$$ |$$  __$$< $$ |  $$ | \____$$\ 
+$$ |  $$\ $$ |  $$ |$$ |  $$ |$$ |  $$ |$$\   $$ |
+\$$$$$$  |$$ |  $$ |$$ |  $$ |$$$$$$$  |\$$$$$$  |
+ \______/ \__|  \__|\__|  \__|\_______/  \______/                                               
+*/
 .card {
     background-color: #1a1b26;
     border: 1px solid #2f3447;
-    border-radius: 6px;
+    border-radius: 8px;
     margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
-    background-color: #1f2335;
+    background-color: #24283b;
     border-bottom: 1px solid #2f3447;
-    padding: 10px 15px;
+    padding: 12px 20px;
+    border-radius: 8px 8px 0 0;
 }
 
-.card-header h3 {
-    color: #4367b5;
+.card-title {
+    color: #7aa2f7;
     margin: 0;
     font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .card-body {
     padding: 15px;
+    background-color: #24283b;
+    border-radius: 0 0 8px 8px;
 }
 
-/* Output and chat message areas */
-#output, #chat-messages {
-    background-color: #1f2335;
+/* 
+ $$$$$$\        $$\ $$$$$$$\         $$$$$$\  $$\   $$\ $$$$$$$\         $$$$$$\  $$\   $$\  $$$$$$\ $$$$$$$$\ 
+$$  __$$\      $$  |$$  __$$\       $$  __$$\ $$$\  $$ |$$  __$$\       $$  __$$\ $$ |  $$ |$$  __$$\\__$$  __|
+$$ /  $$ |    $$  / $$ |  $$ |      $$ /  $$ |$$$$\ $$ |$$ |  $$ |      $$ /  \__|$$ |  $$ |$$ /  $$ |  $$ |   
+$$ |  $$ |   $$  /  $$$$$$$  |      $$$$$$$$ |$$ $$\$$ |$$ |  $$ |      $$ |      $$$$$$$$ |$$$$$$$$ |  $$ |   
+$$ |  $$ |  $$  /   $$  ____/       $$  __$$ |$$ \$$$$ |$$ |  $$ |      $$ |      $$  __$$ |$$  __$$ |  $$ |   
+$$ |  $$ | $$  /    $$ |            $$ |  $$ |$$ |\$$$ |$$ |  $$ |      $$ |  $$\ $$ |  $$ |$$ |  $$ |  $$ |   
+ $$$$$$  |$$  /     $$ |            $$ |  $$ |$$ | \$$ |$$$$$$$  |      \$$$$$$  |$$ |  $$ |$$ |  $$ |  $$ |   
+ \______/ \__/      \__|            \__|  \__|\__|  \__|\_______/        \______/ \__|  \__|\__|  \__|  \__|          
+*/
+#output {
     border: 1px solid #2f3447;
-    border-radius: 4px;
-    color: #a9b1d6;
+    border-radius: 6px;
+    color: #ffffff;
+    min-height: 262px;
+    padding: 15px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+#chat-messages {
+    border: 1px solid #2f3447;
+    border-radius: 6px;
     min-height: 200px;
     padding: 15px;
+    overflow-y: auto;
 }
 
-#output-container{
-    background-color: pink;
+.chat-message {
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #1a1b26;
+    border: 1px solid #2f3447;
 }
 
-/* Chat input styling */
+.chat-message .message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.chat-message .username {
+    font-weight: 600;
+    color: #7aa2f7;
+    font-size: 0.9rem;
+}
+
+.chat-message .timestamp {
+    color: #565f89;
+    font-size: 0.8rem;
+}
+
+.chat-message .message-content {
+    color: #a9b1d6;
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+
 #chat-input {
-    background-color: #1f2335;
+    background-color: #1a1b26;
     border: 1px solid #2f3447;
     color: #a9b1d6;
-    padding: 8px 12px;
-    border-radius: 4px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    width: calc(100% - 80px);
+    margin-right: 10px;
 }
 
 #chat-input::placeholder {
     color: #565f89;
 }
 
-/* Language select and run button styling */
-#language {
-    background-color: #1f2335;
-    border: 1px solid #2f3447;
-    color: #a9b1d6;
-    padding: 6px 12px;
-    border-radius: 4px;
-}
-
-#run-code {
+.btn-send {
     background-color: #7aa2f7;
-    border: none;
     color: #1a1b26;
-    padding: 6px 16px;
-    border-radius: 4px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
     font-weight: 500;
+    transition: background-color 0.2s;
 }
 
-#run-code:hover {
+.btn-send:hover {
     background-color: #6889ff;
 }
 
-/* Scrollbar styling */
+/*
+ $$$$$$\   $$$$$$\  $$$$$$$\  $$$$$$$$\  $$$$$$\  $$$$$$$\  $$$$$$$$\  $$$$$$\  
+$$  __$$\ $$  __$$\ $$  __$$\ $$  _____|$$  __$$\ $$  __$$\ $$  _____|$$  __$$\ 
+$$ /  \__|$$ /  $$ |$$ |  $$ |$$ |      $$ /  $$ |$$ |  $$ |$$ |      $$ /  $$ |
+$$ |      $$ |  $$ |$$ |  $$ |$$$$$\    $$$$$$$$ |$$$$$$$  |$$$$$\    $$$$$$$$ |
+$$ |      $$ |  $$ |$$ |  $$ |$$  __|   $$  __$$ |$$  __$$< $$  __|   $$  __$$ |
+$$ |  $$\ $$ |  $$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |  $$ |$$ |      $$ |  $$ |
+\$$$$$$  | $$$$$$  |$$$$$$$  |$$$$$$$$\ $$ |  $$ |$$ |  $$ |$$$$$$$$\ $$ |  $$ |
+ \______/  \______/ \_______/ \________|\__|  \__|\__|  \__|\________|\__|  \__|                       
+*/
+textarea.form-control,
+textarea.form-control:focus,
+textarea.form-control:active {
+    height: 250px;
+    color: #a9b1d6;
+    background-color: #1f2335;
+    font-family: 'Consolas', 'Monaco', monospace;
+    resize: vertical;
+}
+
+/*
+ $$$$$$\   $$$$$$\  $$$$$$$\   $$$$$$\  $$\       $$\       $$$$$$$\   $$$$$$\  $$$$$$$\  
+$$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\ $$ |      $$ |      $$  __$$\ $$  __$$\ $$  __$$\ 
+$$ /  \__|$$ /  \__|$$ |  $$ |$$ /  $$ |$$ |      $$ |      $$ |  $$ |$$ /  $$ |$$ |  $$ |
+\$$$$$$\  $$ |      $$$$$$$  |$$ |  $$ |$$ |      $$ |      $$$$$$$\ |$$$$$$$$ |$$$$$$$  |
+ \____$$\ $$ |      $$  __$$< $$ |  $$ |$$ |      $$ |      $$  __$$\ $$  __$$ |$$  __$$< 
+$$\   $$ |$$ |  $$\ $$ |  $$ |$$ |  $$ |$$ |      $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ |
+\$$$$$$  |\$$$$$$  |$$ |  $$ | $$$$$$  |$$$$$$$$\ $$$$$$$$\ $$$$$$$  |$$ |  $$ |$$ |  $$ |
+ \______/  \______/ \__|  \__| \______/ \________|\________|\_______/ \__|  \__|\__|  \__|
+*/
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -111,4 +171,35 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #3b4261;
+}
+
+/*
+ $$$$$$\ $$$$$$$$\ $$\   $$\ $$$$$$$$\ $$$$$$$\   $$$$$$\  
+$$  __$$\\__$$  __|$$ |  $$ |$$  _____|$$  __$$\ $$  __$$\ 
+$$ /  $$ |  $$ |   $$ |  $$ |$$ |      $$ |  $$ |$$ /  \__|
+$$ |  $$ |  $$ |   $$$$$$$$ |$$$$$\    $$$$$$$  |\$$$$$$\  
+$$ |  $$ |  $$ |   $$  __$$ |$$  __|   $$  __$$<  \____$$\ 
+$$ |  $$ |  $$ |   $$ |  $$ |$$ |      $$ |  $$ |$$\   $$ |
+ $$$$$$  |  $$ |   $$ |  $$ |$$$$$$$$\ $$ |  $$ |\$$$$$$  |
+ \______/   \__|   \__|  \__|\________|\__|  \__| \______/
+*/
+#language {
+    background-color: #1f2335;
+    border: 1px solid #2f3447;
+    color: #8f9098;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+#run-code {
+    background-color: #4b70c0;
+    border: none;
+    color: #000000;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+#run-code:hover {
+    background-color: #6889ff;
 }

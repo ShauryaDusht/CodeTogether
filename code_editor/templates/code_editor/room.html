@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Code Room: {{ room_name }}{% endblock %}
+{% block title %} Code Room: {{ room_name }}{% endblock %}
 
 {% block content %}
     <!-- Hidden element to get room-name in script.js -->
@@ -34,7 +34,7 @@
                         <h3 class="card-title mb-0">Output</h3>
                     </div>
                     <div class="card-body">
-                        <div id="output" class="bg-light p-3 rounded"></div>
+                        <div id="output" class="bg-dark p-3 rounded"></div>
                     </div>
                 </div>
             </div>
@@ -46,8 +46,13 @@
                         <h3 class="card-title mb-0">Chat</h3>
                     </div>
                     <div class="card-body">
-                        <div id="chat-messages" class="bg-light p-3 rounded mb-3" style="height: 200px; overflow-y: auto;"></div>
-                        <input id="chat-input" type="text" class="form-control" placeholder="Type your message...">
+                        <div id="chat-messages" class="bg-dark p-3 rounded mb-3" style="height: 200px; overflow-y: auto;">
+                            <!-- Messages will be dynamically added here -->
+                        </div>
+                        <div class="input-group">
+                            <input id="chat-input" type="text" class="form-control" placeholder="Type your message...">
+                            <button id="send-message" class="btn btn-primary">Send</button>
+                        </div>
                     </div>
                 </div>
             </div>

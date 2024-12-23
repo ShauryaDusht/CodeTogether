@@ -6,6 +6,7 @@ import code_editor.routing
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'collaborative_code_editor.settings')
 
+# protocol type router for routing HTTP and WebSocket requests
 application = ProtocolTypeRouter({
     "http": get_asgi_application(),
     "websocket": AuthMiddlewareStack(
