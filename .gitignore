@@ -1,3 +1,5 @@
 venv/
 code_editor/__pycache__/
-code_editor/__pycache__/
+code_editor/__pycache__/"*.pyc" 
+collaborative_editor/__pycache__/
+collaborative_editor/__pycache__/"*.pyc"
