@@ -2,7 +2,35 @@
 {% load static %}
 
 {% block title %} Code Room: {{ room_name }}{% endblock %}
-
+{% block extra_css %}
+<style>
+    .remote-cursor {
+        position: absolute;
+        pointer-events: none;
+        z-index: 1000;
+    }
+    
+    .cursor-flag {
+        padding: 2px 8px;
+        border-radius: 3px;
+        font-size: 12px;
+        background: inherit;
+        color: white;
+        white-space: nowrap;
+        transform: translateY(-100%);
+    }
+    
+    .cursor-line {
+        width: 2px;
+        height: 20px;
+        background: red;
+    }
+    
+    #code-editor-container {
+        position: relative;
+    }
+    </style>
+{% endblock %}
 {% block content %}
     <!-- Hidden element to get room-name in script.js -->
     <div id="room-name" style="display: none;">{{ room_name }}</div>
@@ -23,6 +51,7 @@
         <!-- Code editor section -->
         <div id="code-editor-container" class="mb-3">
             <textarea id="code-editor" placeholder="Start coding here..." class="form-control"></textarea>
+            <div id="cursor-container"></div>
         </div>
 
         <!-- Output and Chat Section -->

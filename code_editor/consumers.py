@@ -12,12 +12,10 @@ class CodeEditorConsumer(AsyncWebsocketConsumer):
         self.room_group_name = f'code_{self.room_name}'
         self.user = self.scope["user"]
 
-        # Join room group
         await self.channel_layer.group_add(
             self.room_group_name,
             self.channel_name
         )
-
         await self.accept()
 
     async def disconnect(self, close_code):
@@ -30,8 +28,18 @@ class CodeEditorConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         data = json.loads(text_data)
         message_type = data.get('type')
+        if message_type == 'cursor_update':
+            username = self.user.username if self.user.is_authenticated else 'Anonymous'
+            await self.channel_layer.group_send(
+                self.room_group_name,{
+                    'type': 'broadcast_cursor_position',
+                    'username': username,
+                    'position': data['position'],
+                    'sender_channel': self.channel_name
+                }
+            )
 
-        if message_type == 'code_update':
+        elif message_type == 'code_update':
             # Broadcast code update to all users in the room
             await self.channel_layer.group_send(
                 self.room_group_name,
@@ -96,6 +104,13 @@ class CodeEditorConsumer(AsyncWebsocketConsumer):
             'type': 'code_update',
             'code': event['code']
         }))
+    async def broadcast_cursor_position(self, event):
+        if event['sender_channel'] != self.channel_name:
+            await self.send(text_data=json.dumps({
+                'type': 'cursor_update',
+                'username': event['username'],
+                'position': event['position']
+            }))
 
     @database_sync_to_async
     def execute_code(self, code, language):
