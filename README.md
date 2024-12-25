@@ -13,83 +13,82 @@ You can view or download the file from the link: [Video](https://drive.google.co
 ## ✨ Key Features
 
 ### 🤝 Real-Time Collaboration
-- **Live Code Editing** - Watch changes appear instantly as your team codes
-- **Cursor Tracking** - See where others are working in real-time
-- **Room-Based Sessions** - Create private coding spaces with unique room codes
+  - **Live Code Editing** - Watch changes appear instantly as your team codes
+  - **Cursor Tracking** - See where others are working in real-time
+  - **Room-Based Sessions** - Create private coding spaces with unique room codes
 
 ### 💻 Powerful Editor
-- **Intelligent Syntax Completion** 
-  - Auto-closing brackets and quotes
-  - Smart indentation
-- **Code Execution** - Run your Python code directly in the browser
+  - **Intelligent Syntax Completion** 
+    - Auto-closing brackets and quotes
+    - Smart indentation
+  - **Code Execution** - Run your Python code directly in the browser
 
 ### 🔒 Security & Authentication
-- **Secure User Accounts** - Protected access to your coding spaces
-- **Private Rooms** - Control who can join your sessions
-- **Safe Code Execution** - Sandboxed environment for running code
+  - **Secure User Accounts** - Protected access to your coding spaces
+  - **Private Rooms** - Control who can join your sessions
+  - **Safe Code Execution** - Sandboxed environment for running code
 
 ### 💬 Team Features
-- **Built-in Chat** - Discuss code changes in real-time
+  - **Built-in Chat** - Discuss code changes in real-time
 ## 🚀 Quick Start
 
 ### 📋 Prerequisites
-```bash
-- Python 3.9+
-- Docker
-- Docker Compose
-```
+  ```bash
+  - Python 3.9+
+  - Docker
+  - Docker Compose
+  ```
 
 ### 🧑‍💻 Clone the Repository
 
-```bash
-$ git clone https://github.com/ShauryaDusht/CodeTogether.git
-$ cd CodeTogether
-```
+  ```bash
+  $ git clone https://github.com/ShauryaDusht/CodeTogether.git
+  $ cd CodeTogether
+  ```
 
 ### 🔧 Install Dependencies
 
-1. **Create a Virtual Environment**:
-   ```bash
-   $ python3 -m venv venv
-   ```
-   For Linux:
-   ```
-   $ source venv/bin/activate  
-   ```
-   For Windows:
-   ```bash
-   .\venv\Scripts\activate
-   ```
-
-2. **Install Requirements**:
-   ```bash
-   $ pip install -r requirements.txt
-   ```
-
+  1. **Create a Virtual Environment**:
+       ```bash
+       $ python3 -m venv venv
+       ```
+       For Linux:
+       ```
+       $ source venv/bin/activate  
+       ```
+       For Windows:
+       ```bash
+       .\venv\Scripts\activate
+       ```
+  
+  2. **Install Requirements**:
+       ```bash
+       $ pip install -r requirements.txt
+       ```
+  
 ### 🌐 Set Up Environment Variables
-
-Create a `.env` file in the root directory with the following content:
-
-```env
-SECRET_KEY=your-secret-key
-DEBUG=True
-ALLOWED_HOSTS=127.0.0.1,localhost
-```
-
-### 🛠️ Run Migrations
-
-```bash
-$ python manage.py migrate
-```
-
-### 🚀 Start the Server
-
-```bash
-$ python manage.py runserver
-```
-
-Open your browser and access the app at `http://127.0.0.1:8000`.
-
+  
+  Create a `.env` file in the root directory with the following content:
+  ```env
+  SECRET_KEY=your-secret-key
+  DEBUG=True
+  ALLOWED_HOSTS=127.0.0.1,localhost
+  ```
+  
+  ### 🛠️ Run Migrations
+  
+  ```bash
+  $ python manage.py migrate
+  ```
+  
+  ### 🚀 Start the Server
+  
+  ```bash
+  $ python manage.py runserver
+  ```
+  
+  Open your browser and access the app at `http://127.0.0.1:8000`.
+  
 ---
 
 ## 🐳 Running with Docker Compose
@@ -165,8 +164,6 @@ collaborative_code_editor/            # Root project directory
 │   │       ├── login.html
 │   │       └── register.html
 │   │
-│   │
-│   ├── __init__.py
 │   ├── admin.py                     # Admin interface configuration
 │   ├── apps.py                      # App configuration
 │   ├── consumers.py                 # WebSocket consumers
