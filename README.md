@@ -1,41 +1,64 @@
-# Collaborative Python Code Editor
+# 🚀 Collaborative Python Code Editor
 
-This project is a real-time collaborative Python code editor built with Django, Django Channels, WebSockets, Ace Editor/CodeMirror, and Docker. It includes features like live code editing, chat functionality, syntax completion, and user authentication.
+[![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
+[![Django](https://img.shields.io/badge/Django-Latest-green.svg)](https://www.djangoproject.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 
----
+> Transform your coding experience with real-time collaboration! Write, share, and execute Python/C++/Java code together in a powerful, intuitive environment.
 
-## Features
+## Preview
+You can view or download the file from the link: [Video](https://drive.google.com/file/d/1DPq_k81zXmnlQnFxjSWoJolZMgR_gIBO/view)
 
-- **Real-Time Collaboration**: Multiple users can edit Python code simultaneously in real-time.
-- **Chat Feature**: Communicate with other users in the same room with a chat interface.
-- **Syntax Completion**: Includes auto-closing brackets, quotes, and auto-indentation for Python.
-- **Authentication**: Users can register, log in, and join rooms with unique codes.
-- **Code Execution**: Execute Python code within the editor and view the output.
-- **Cursor Tracking**: See the cursor positions of other users in real-time.
-- **Room-Based Sessions**: Collaborative sessions are managed via room codes.
+## ✨ Key Features
 
----
+### 🤝 Real-Time Collaboration
+- **Live Code Editing** - Watch changes appear instantly as your team codes
+- **Cursor Tracking** - See where others are working in real-time
+- **Room-Based Sessions** - Create private coding spaces with unique room codes
 
-## Installation
+### 💻 Powerful Editor
+- **Intelligent Syntax Completion** 
+  - Auto-closing brackets and quotes
+  - Smart indentation
+- **Code Execution** - Run your Python code directly in the browser
 
-### Prerequisites
+### 🔒 Security & Authentication
+- **Secure User Accounts** - Protected access to your coding spaces
+- **Private Rooms** - Control who can join your sessions
+- **Safe Code Execution** - Sandboxed environment for running code
 
+### 💬 Team Features
+- **Built-in Chat** - Discuss code changes in real-time
+## 🚀 Quick Start
+
+### 📋 Prerequisites
+```bash
 - Python 3.9+
 - Docker
-
-### Clone the Repository
-
-```bash
-$ git clone https://github.com/ShauryaDusht/collaborative-code-editor.git
-$ cd collaborative-code-editor
+- Docker Compose
 ```
 
-### Install Dependencies
+### 🧑‍💻 Clone the Repository
+
+```bash
+$ git clone https://github.com/ShauryaDusht/CodeTogether.git
+$ cd CodeTogether
+```
+
+### 🔧 Install Dependencies
 
 1. **Create a Virtual Environment**:
    ```bash
    $ python3 -m venv venv
-   $ source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+   For Linux:
+   ```
+   $ source venv/bin/activate  
+   ```
+   For Windows:
+   ```bash
+   .\venv\Scripts\activate
    ```
 
 2. **Install Requirements**:
@@ -43,7 +66,7 @@ $ cd collaborative-code-editor
    $ pip install -r requirements.txt
    ```
 
-### Set Up Environment Variables
+### 🌐 Set Up Environment Variables
 
 Create a `.env` file in the root directory with the following content:
 
@@ -53,54 +76,126 @@ DEBUG=True
 ALLOWED_HOSTS=127.0.0.1,localhost
 ```
 
-### Run Migrations
+### 🛠️ Run Migrations
 
 ```bash
 $ python manage.py migrate
 ```
 
-### Start the Server
+### 🚀 Start the Server
 
 ```bash
 $ python manage.py runserver
 ```
 
-Access the app at `http://127.0.0.1:8000`.
+Open your browser and access the app at `http://127.0.0.1:8000`.
 
 ---
 
-## Usage
+## 🐳 Running with Docker Compose
 
-1. Register and log in.
-2. Join or create a room using a unique room code.
-3. Start collaborating in real-time with others.
+### 🌐Set Up Environment Variables
 
----
+Ensure the `.env` file is present with the following content:
 
-## Running with Docker
+```env
+SECRET_KEY=your-secret-key
+DEBUG=True
+ALLOWED_HOSTS=127.0.0.1,localhost
+```
 
-### Build and Run the Docker Container
+### 🐳 Use Docker Compose
 
-1. **Build the Docker Image**:
+1. **Build and Run the Application**:
    ```bash
-   $ docker build -t collaborative-code-editor .
+   $ docker-compose up --build
    ```
 
-2. **Run the Docker Container**:
+2. **Stop the Application**:
    ```bash
-   $ docker run -p 8000:8000 collaborative-code-editor
+   $ docker-compose down
    ```
 
-Access the app at `http://127.0.0.1:8000`.
+Open your browser and access the app at `http://127.0.0.1:8000`.
 
 ---
 
-## Folder Structure
+## 🛠️ Technologies Used
 
+### ⚡ Backend:
+- Django & Django Channels for robust server-side operations
+- WebSocket implementation for real-time features
+
+### 🎯 Frontend:
+- Modern Bootstrap UI for responsive design
+- Advanced code editor integration
+
+### 📊 Database:
+- SQLite (default) for easy setup
+- Scalable to PostgreSQL for production
+
+### 🖥️ Development:
+- Docker Compose for container orchestration
+- Environment-based configuration
 
 ---
 
-## Technologies Used
+## 📁 Folder Structure
+
+```
+collaborative_code_editor/            # Root project directory
+│
+├── collaborative_code_editor/        # Project configuration
+│   ├── __init__.py
+│   ├── asgi.py                       # ASGI configuration (needed for WebSockets)
+│   ├── settings.py                   # Project settings
+│   ├── urls.py                       # Main URL configuration
+│   └── wsgi.py                       # WSGI configuration
+│
+├── code_editor/                      # Main app
+│   ├── migrations/
+│   │   └── __init__.py
+│   │
+│   ├── templates/                    # HTML templates
+│   │   ├── code_editor/
+│   │   │   ├── home.html
+│   │   │   ├── join_room.html
+│   │   │   └── room.html
+│   │   └── authentication/
+│   │       ├── login.html
+│   │       └── register.html
+│   │
+│   │
+│   ├── __init__.py
+│   ├── admin.py                     # Admin interface configuration
+│   ├── apps.py                      # App configuration
+│   ├── consumers.py                 # WebSocket consumers
+│   ├── models.py                    # Database models
+│   ├── routing.py                   # WebSocket URL routing
+│   ├── urls.py                      # HTTP URL routing
+│   └── views.py                     # HTTP views
+│
+├── static/                           # Static files
+│   └── code_editor/
+│       ├── css/
+│       │   ├── auth.css              # Authentication styles
+│       │   ├── join_room.css         # Join room page styles
+│       │   └── style.css             # Global styles
+│       └── js/
+│           └── script.js             # Frontend JavaScript
+│
+├── .gitignore                       # Git ignore file
+├── docker-compose.yml               # Docker Compose configuration
+├── Dockerfile                       # Docker configuration
+├── LICENSE                          # Project license
+├── manage.py                        # Django management script
+├── README.md                        # Project documentation
+├── .env                             # Environment variables file (to be created)
+└── requirements.txt                 # Project dependencies
+```
+---
+
+## 🔧 Technologies Used
 
 - **Backend**: Django, Django Channels
 - **Frontend**: Bootstrap
@@ -110,6 +205,16 @@ Access the app at `http://127.0.0.1:8000`.
 
 ---
 
-## License
+### 🤝 Contributing
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+I welcome contributions! If you'd like to contribute, feel free to fork the repository, make changes, and create a pull request. Please ensure your changes are well-documented.
+
+For any issues or suggestions, open an issue in the repository.
+
+---
+
+### 📧 Contact
+
+Feel free to reach out to me via email for any queries or collaboration opportunities:
+
+📧 [shauryadusht@gmail.com](mailto:shauryadusht@gmail.com)
