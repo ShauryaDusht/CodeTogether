@@ -11,29 +11,15 @@
 You can view or download the file from the link: [Video](https://drive.google.com/file/d/1DPq_k81zXmnlQnFxjSWoJolZMgR_gIBO/view)
 
 ## ✨ Key Features
+- Real-time collaboration with live editing, cursor tracking, and room-based sessions
+- Powerful editor with syntax completion, auto-indentation, and in-browser Python execution
+- Secure authentication, private rooms, and sandboxed code execution
+- Built-in chat for team discussions
 
-### 🤝 Real-Time Collaboration
-  - **Live Code Editing** - Watch changes appear instantly as your team codes
-  - **Cursor Tracking** - See where others are working in real-time
-  - **Room-Based Sessions** - Create private coding spaces with unique room codes
-
-### 💻 Powerful Editor
-  - **Intelligent Syntax Completion** 
-    - Auto-closing brackets and quotes
-    - Smart indentation
-  - **Code Execution** - Run your Python code directly in the browser
-
-### 🔒 Security & Authentication
-  - **Secure User Accounts** - Protected access to your coding spaces
-  - **Private Rooms** - Control who can join your sessions
-  - **Safe Code Execution** - Sandboxed environment for running code
-
-### 💬 Team Features
-  - **Built-in Chat** - Discuss code changes in real-time
 ## 🚀 Quick Start
 
 ### 📋 Prerequisites
-  ```bash
+  ```
   - Python 3.9+
   - Docker
   - Docker Compose
@@ -41,7 +27,7 @@ You can view or download the file from the link: [Video](https://drive.google.co
 
 ### 🧑‍💻 Clone the Repository
 
-  ```bash
+  ```
   $ git clone https://github.com/ShauryaDusht/CodeTogether.git
   $ cd CodeTogether
   ```
@@ -53,7 +39,7 @@ You can view or download the file from the link: [Video](https://drive.google.co
        $ python3 -m venv venv
        ```
        For Linux:
-       ```
+       ```bash
        $ source venv/bin/activate  
        ```
        For Windows:
