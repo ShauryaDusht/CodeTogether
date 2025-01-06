@@ -28,19 +28,19 @@ You can view or download the file from the link: [Video](https://drive.google.co
 ### 🧑‍💻 Clone the Repository
 
   ```
-  $ git clone https://github.com/ShauryaDusht/CodeTogether.git
-  $ cd CodeTogether
+  git clone https://github.com/ShauryaDusht/CodeTogether.git
+  cd CodeTogether
   ```
 
 ### 🔧 Install Dependencies
 
   1. **Create a Virtual Environment**:
        ```bash
-       $ python3 -m venv venv
+       python3 -m venv venv
        ```
        For Linux:
        ```bash
-       $ source venv/bin/activate  
+       source venv/bin/activate  
        ```
        For Windows:
        ```bash
@@ -49,7 +49,7 @@ You can view or download the file from the link: [Video](https://drive.google.co
   
   2. **Install Requirements**:
        ```bash
-       $ pip install -r requirements.txt
+       pip install -r requirements.txt
        ```
   
 ### 🌐 Set Up Environment Variables
@@ -64,13 +64,13 @@ You can view or download the file from the link: [Video](https://drive.google.co
   ### 🛠️ Run Migrations
   
   ```bash
-  $ python manage.py migrate
+  python manage.py migrate
   ```
   
   ### 🚀 Start the Server
   
   ```bash
-  $ python manage.py runserver
+  python manage.py runserver
   ```
   
   Open your browser and access the app at `http://127.0.0.1:8000`.
@@ -93,12 +93,12 @@ ALLOWED_HOSTS=127.0.0.1,localhost
 
 1. **Build and Run the Application**:
    ```bash
-   $ docker-compose up --build
+   docker-compose up --build
    ```
 
 2. **Stop the Application**:
    ```bash
-   $ docker-compose down
+   docker-compose down
    ```
 
 Open your browser and access the app at `http://127.0.0.1:8000`.
