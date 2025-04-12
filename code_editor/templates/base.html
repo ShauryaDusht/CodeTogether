@@ -14,25 +14,11 @@
         body {
             margin: 0;
             min-height: 100vh;
-            background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #1e293b);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            color: #f1f5f9;
+            background: #c6d9e8; /* Light blue background */
+            color: #1a202c; /* Dark text for readability */
             position: relative;
             overflow-x: hidden;
             font-family: 'Inter', sans-serif;
-        }
-    
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
         }
     
         .particles {
@@ -49,7 +35,7 @@
             position: absolute;
             width: 3px;
             height: 3px;
-            background: rgba(255, 255, 255, 0.1); /* Soft glowing dots */
+            background: rgba(0, 0, 0, 0.05); /* Soft light particles */
             border-radius: 50%;
             animation: float 8s linear infinite;
         }
@@ -60,7 +46,7 @@
                 opacity: 0;
             }
             50% {
-                opacity: 1;
+                opacity: 0.5;
             }
             100% {
                 transform: translateY(-100vh) translateX(100px);
@@ -69,23 +55,20 @@
         }
     
         .navbar {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.75));
-            backdrop-filter: blur(14px) saturate(180%);
-            -webkit-backdrop-filter: blur(14px) saturate(180%);
-            border-bottom: 2px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            background: #000000; /* Soft light blue background */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
             z-index: 1000;
             position: relative;
             padding: 1.5rem 2rem;
-            border-radius: 0 0 1.5rem 1.5rem;
+            /* border-radius: 0 0 1.5rem 1.5rem; */
             transition: all 0.4s ease-in-out;
             font-size: 1.15rem;
-            color: #f1f5f9;
+            color: #000000; /* Dark gray text */
         }
     
         .navbar:hover {
-            background: linear-gradient(135deg, rgba(51, 65, 85, 0.95), rgba(30, 41, 59, 0.9));
-            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.08);
+            background: #060c13; /* Lighter hover effect */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
             transform: scale(1.01);
         }
     
@@ -96,6 +79,15 @@
             right: 0;
             animation: slideDown 0.4s ease-in-out;
         }
+
+        .navbar-brand {
+        display: flex;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.25rem;
+    }
+
     
         @keyframes slideDown {
             from {
@@ -107,22 +99,27 @@
                 opacity: 1;
             }
         }
+
+
     
-        .container {
-            position: relative;
-            z-index: 1;
+        /* Syntax Highlighting (for code) */
+        code {
+            color: #3182ce; /* Blue for keywords */
         }
-    
-        main.container {
-            background: rgba(30, 41, 59, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-top: 2rem;
-            box-shadow: 0 4px 30px rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            color: #e2e8f0;
+        .keyword {
+            color: #2b6cb0; /* Darker blue for important keywords */
+        }
+        .string {
+            color: #38b2ac; /* Teal for strings */
+        }
+        .comment {
+            color: #718096; /* Subtle gray for comments */
+        }
+        .variable {
+            color: #2b6cb0; /* Blue for variables */
+        }
+        .function {
+            color: #dd6b20; /* Orange for function names */
         }
     </style>
     
