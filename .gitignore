@@ -1,7 +1,9 @@
 venv/
 code_editor/__pycache__/
 code_editor/__pycache__/"*.pyc" 
-collaborative_editor/__pycache__/
-collaborative_editor/__pycache__/"*.pyc"
+collaborative_code_editor/__pycache__/
+collaborative_code_editor/__pycache__/"*.pyc"
 db.sqlite3
 .env
+code_editor/migrations/
+*.pyc

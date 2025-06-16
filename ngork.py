@@ -1,9 +1,8 @@
 from pyngrok import ngrok
 
-# Start ngrok tunnel on port 8000
-public_url = ngrok.connect(8000)
-print(f" * ngrok tunnel running at: {public_url}")
+port = 8000
 
-# Keep the script alive
-input("Press Enter to stop the tunnel...\n")
-ngrok.disconnect(public_url)
+public_url = ngrok.connect(port)
+print(f"Public URL: {public_url}")
+
+input("Press Enter to exit...\n")
