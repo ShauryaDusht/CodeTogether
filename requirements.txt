@@ -23,7 +23,7 @@ pycodestyle==2.12.1
 pycparser==2.22
 pyOpenSSL==24.3.0
 python-dotenv==1.0.1
-requests==2.32.3
+requests==2.32.4
 service-identity==24.2.0
 setuptools==78.1.1
 sqlparse==0.5.3
