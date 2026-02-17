@@ -26,7 +26,7 @@ python-dotenv==1.0.1
 requests==2.32.4
 service-identity==24.2.0
 setuptools==78.1.1
-sqlparse==0.5.3
+sqlparse==0.5.4
 Twisted==24.11.0
 txaio==23.1.1
 typing_extensions==4.12.2
